@@ -31,6 +31,15 @@ bin/gendiff.js -h
 # or
 make gendiff -h
 
+# usage
+bin/gendiff.js __tests__/fixtures/file01.json __tests__/fixtures/file02.json
+
+bin/gendiff.js __tests__/fixtures/file03.yml __tests__/fixtures/file04.yml
+
+// bin/gendiff.js /Users/ivan/work/frontend/projects/frontend-project-46/__tests__/fixtures/file01.json
+
+// bin/gendiff.js /Users/ivan/work/frontend/projects/frontend-project-46/__tests__/fixtures/file01.json /Users/ivan/work/frontend/projects/frontend-project-46/__tests__/fixtures/file02.json
+
 
 ```
 
