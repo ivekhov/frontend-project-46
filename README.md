@@ -41,3 +41,15 @@ bin/gendiff.js __tests__/fixtures/file03.yml __tests__/fixtures/file04.yml
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/ivekhov/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/ivekhov/frontend-project-46/actions)
+
+### GitHub Actions
+
+[![Actions Status](https://github.com/ivekhov/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ivekhov/frontend-project-46/actions)
+
+
+### CodeClimate: Code Coverage
+[![Maintainability](https://api.codeclimate.com/v1/badges/${{secrets.code_climate_maintainability}}/maintainability)](https://codeclimate.com/github/ivekhov/frontend-project-46/maintainability)
+
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f9b0debda75ad31a2506/test_coverage)](https://codeclimate.com/github/ivekhov/frontend-project-46/test_coverage)
+
