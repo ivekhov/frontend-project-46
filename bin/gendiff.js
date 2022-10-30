@@ -97,4 +97,3 @@ program
   });
 
 export default () => program.parse();
-
