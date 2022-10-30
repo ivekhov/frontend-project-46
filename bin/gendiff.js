@@ -2,8 +2,10 @@
 
 import { Command } from 'commander';
 import { existsSync, readFileSync } from 'node:fs';
-import * as path from 'node:path';
 import _ from 'lodash';
+import * as path from 'node:path';
+import fileParser from './parsers.js';
+import outputFormatter from './formatters.js';
 
 const program = new Command();
 
@@ -20,15 +22,8 @@ program
     const path_1 = path.resolve(program.args[0]);
     const path_2 = path.resolve(program.args[1]);
 
-    // ToDo: Read files. Return objects. Done. 
-    const file_1 = readFileSync(path_1, 'utf8');
-    const obj_1 = JSON.parse(file_1);
-
-    const file_2 = readFileSync(path_2, 'utf8');
-    const obj_2 = JSON.parse(file_2);
-
-    // ToDo: define file extension. Done.
-    const fileType = path_1.split('.').slice(-1);
+    const obj_1 = fileParser(path_1);
+    const obj_2 = fileParser(path_2);
 
     // ToDo: analyze and compare file content. Done.
     const entries_2 = Object.entries(obj_2);
@@ -89,11 +84,10 @@ program
     }
 
     // ToDo: Convert Object to string and polishing output
-    let diff = JSON.stringify(orderedResult, null, '\  ');
-    diff = diff.replaceAll('"', '');
-    diff = diff.replaceAll(',', '');
+    const diff = outputFormatter(orderedResult);
     console.log(diff);
+
     // return diff;
   });
-
-export default () => program.parse();
+program.parse()
+// export default () => program.parse();
