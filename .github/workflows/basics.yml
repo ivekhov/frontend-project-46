@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
-        run: make install
-        run: make lint
-        run: make test
+        run: |
+          make install
+          make lint
+          make test
