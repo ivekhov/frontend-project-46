@@ -92,8 +92,9 @@ program
     let diff = JSON.stringify(orderedResult, null, '\  ');
     diff = diff.replaceAll('"', '');
     diff = diff.replaceAll(',', '');
-    // console.log(diff);
-    return diff;
+    console.log(diff);
+    // return diff;
   });
-program.parse();
+
+export default () => program.parse();
 
