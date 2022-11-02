@@ -83,11 +83,13 @@ program
         } 
     }
 
-    // ToDo: Convert Object to string and polishing output
-    const diff = outputFormatter(orderedResult);
+    // ToDo: Convert Object to string and polishing output. Done.
+    // const diff = outputFormatter(orderedResult);
     console.log(diff);
 
     // return diff;
   });
 program.parse()
-// export default () => program.parse();
+export default;
+
+// console.log(42);

@@ -32,12 +32,17 @@ bin/gendiff.js -h
 make gendiff -h
 
 # usage
-bin/gendiff.js __tests__/fixtures/file01.json __tests__/fixtures/file02.json
+bin/gendiff.js __tests__/__fixtures__/file01.json __tests__/__fixtures__/file02.json
 
-bin/gendiff.js __tests__/fixtures/file03.yml __tests__/fixtures/file04.yml
-
+bin/gendiff.js __tests__/__fixtures__/file03.yml __tests__/__fixtures__/file04.yml
 
 ```
+ToDo:
+- recursion task #06
+- fix tests of cli utility 
+- fix make calls
+- fix actions
+
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/ivekhov/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/ivekhov/frontend-project-46/actions)
