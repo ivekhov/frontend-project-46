@@ -2,10 +2,26 @@
 
 Frontend Developer on Hexlet.
 
-## Steps
+## Setup local
 
+```bash
+make install-local
+```
+
+## Run tests
+
+```bash
+make test
+
+gendiff  __tests__/__fixtures__/file01.json __tests__/__fixtures__/file02.json
+
+
+```
+
+## Development
 
 Once when developing:
+
 ```bash
 # add in package.json
 "bin": {
@@ -22,23 +38,16 @@ make test
 
 make lint
 
-make publish
-
 make install-local
 
+make publish
+
 make gendiff-help
-```
-
-Example of utility usage
-
-```bash
-bin/gendiff.js __tests__/__fixtures__/file01.json __tests__/__fixtures__/file02.json
 ```
 
 ToDo:
 
 - recursion task #06
-- fix call `gendiff` and bug `zsh: command not found: gendiff`
 - fix test-coverage command from `make test-coverage`
 - fix tests of cli utility
   - test from or?
@@ -48,7 +57,7 @@ ToDo:
 
 ----
 
-### Hexlet tests and linter status:
+### Hexlet tests and linter status
 
 [![Actions Status](https://github.com/ivekhov/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/ivekhov/frontend-project-46/actions)
 

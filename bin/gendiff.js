@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import gendiff from '../src/gendiff.js';
+import gendiff from '../src/gendiffDev.js';
+import { stylish } from '../src/formatters.js';
 import * as path from 'node:path';
 
 const program = new Command();
@@ -17,7 +18,7 @@ program
     const pathFirstFile = path.resolve(program.args[0]);
     const pathSecondFile = path.resolve(program.args[1]);
 
-    const result = gendiff(pathFirstFile, pathSecondFile);
+    const result = gendiff(pathFirstFile, pathSecondFile, stylish);
     console.log(result);
   });
 program.parse();

@@ -7,14 +7,14 @@ test-coverage:
 lint:
 	npx eslint .
 
+install-local:
+	npm link
+
 publish:
 	npm publish --dry-run
 
 install:
 	npm ci
-
-install-local:
-	npm link
 
 gendiff-help:
 	node bin/gendiff.js -h

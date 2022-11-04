@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import fileParser from './parsers.js';
-import outputFormatter from './formatters.js';
+import { stylish } from './formatters.js';
 
-export default (pathFirstFile, pathSecondFile) => {
+export default (pathFirstFile, pathSecondFile, outputFormatter = stylish) => {
   const objectFirst = fileParser(pathFirstFile);
   const objectSecond = fileParser(pathSecondFile);
 
@@ -63,3 +63,4 @@ export default (pathFirstFile, pathSecondFile) => {
 
   return diff;
 };
+
