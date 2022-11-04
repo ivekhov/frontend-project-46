@@ -1,49 +1,41 @@
 import { test, expect } from '@jest/globals';
 import { readFileSync } from 'node:fs';
-import gendiff from '../bin/gendiff.js';
-
+import * as path from 'node:path';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import gendiff from '../src/gendiff.js';
+
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-
-
-test('test_json_large', () => {
-
-  const correct_path = getFixturePath('test_02_correct.txt');
-  const correct = readFileSync(correct_path_1, 'utf8');
-
-  const input_path_1 = getFixturePath('file05.json');
-  const input_path_2 = getFixturePath('file06.json');  
-
-  // ToDo: get args from cli
-  // expect(gendiff(input_path_1, input_path_2)).toEqual(correct);
-});
+const __dirname = path.dirname(__filename);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__tests__', '__fixtures__', filename);
 
 test('test_json_simple', () => {
+  const correctPath = getFixturePath('test_01_correct.txt');
+  const correct = readFileSync(correctPath, 'utf8');
 
-  const correct_path = getFixturePath('test_01_correct.txt');
-  const correct = readFileSync(correct_path, 'utf8');
+  const pathFirstFile = getFixturePath('file01.json');
+  const pathSecondFile = getFixturePath('file02.json');  
 
-  const input_path_1 = getFixturePath('file01.json');
-  const input_path_2 = getFixturePath('file02.json');  
-
-  // ToDo: get args from cli
-  // expect(gendiff(input_path_1, input_path_2)).toEqual(correct);
+  expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
 });
 
 test('test_yml_simple', () => {
+  const correctPath = getFixturePath('test_01_correct.txt');
+  const correct = readFileSync(correctPath, 'utf8');
 
-  const correct_path = getFixturePath('test_01_correct.txt');
-  const correct = readFileSync(correct_path, 'utf8');
+  const pathFirstFile = getFixturePath('file03.yml');
+  const pathSecondFile = getFixturePath('file04.yml');
 
-  const input_path_1 = getFixturePath('file03.yml');
-  const input_path_2 = getFixturePath('file04.yml');  
-
-  // ToDo: get args from cli
-  // expect(gendiff(input_path_1, input_path_2)).toEqual(correct);
+  expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
 });
 
+// test('test_json_large', () => {
 
+//   const correctPath = getFixturePath('test_02_correct.txt');
+//   const correct = readFileSync(correctPath, 'utf8');
+
+//   const pathFirstFile = getFixturePath('file05.json');
+//   const pathSecondFile = getFixturePath('file06.json');  
+
+//   expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
+// });
