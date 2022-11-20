@@ -1,7 +1,7 @@
 const stylish = (items) => {
   const obj = {};
   for (const item of items) {
-    if (item.status === 'unchanged') {
+    if (item.status === 'unchanged' || item.status === 'nested') {
       obj[`  ${item.node}`] = item.value;
     } else if (item.status === 'deleted') {
       obj[`- ${item.node}`] = item.value;
