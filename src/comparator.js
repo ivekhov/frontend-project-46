@@ -25,33 +25,32 @@ const compare = (objectOld, objectNew) => {
     }
     // status unchanged or updated
     if (Object.hasOwn(objectNew, key) && Object.hasOwn(objectOld, key)) {
-
-      // ToDo: if value is object ? in first or second node ?
-      // if (typeof objectNew[key] === 'object' && typeof objectOld[key] === 'object') {
-      //   //
-      // }
-
-      // ToDo: mark node with its status?
-
-
-      if (objectNew[key] === objectOld[key]) {
+      if (typeof objectNew[key] === 'object' && typeof objectOld[key] === 'object') {
+        diff.push({
+          node: key,
+          status: 'unchanged',
+          value: compare(objectOld[key], objectOld[key]),
+        });
+        // return;
+      } else if (objectNew[key] === objectOld[key]) {
         diff.push({
           node: key,
           status: 'unchanged',
           value: objectNew[key],
         });
-      } else {
-        diff.push({
-          node: key,
-          status: 'updated',
-          value: objectNew[key],
-        });
-        diff.push({
-          node: key,
-          status: 'deleted',
-          value: objectOld[key],
-        });
       }
+      // } else {
+      //   diff.push({
+      //     node: key,
+      //     status: 'updated',
+      //     value: objectNew[key],
+      //   });
+      //   diff.push({
+      //     node: key,
+      //     status: 'deleted',
+      //     value: objectOld[key],
+      //   });
+      // }
     }
   });
   return diff;

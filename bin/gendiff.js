@@ -3,7 +3,8 @@
 import { Command } from 'commander';
 import * as path from 'node:path';
 import gendiff from '../src/gendiffDev.js';
-import { stylish } from '../src/formatters.js';
+// import { stylish } from '../src/formatters.js';
+import { stylish } from '../src/formattersDev.js';
 
 const program = new Command();
 
