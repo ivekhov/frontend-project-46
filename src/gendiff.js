@@ -63,4 +63,3 @@ export default (pathFirstFile, pathSecondFile, outputFormatter = stylish) => {
 
   return diff;
 };
-

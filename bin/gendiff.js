@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
+import * as path from 'node:path';
 import gendiff from '../src/gendiffDev.js';
 import { stylish } from '../src/formatters.js';
-import * as path from 'node:path';
 
 const program = new Command();
 
@@ -15,10 +15,9 @@ program
   .argument('filepath2')
   .version('output the version number')
   .action( (args) => {
-    const pathFirstFile = path.resolve(program.args[0]);
-    const pathSecondFile = path.resolve(program.args[1]);
-
-    const result = gendiff(pathFirstFile, pathSecondFile, stylish);
+    const pathOldFile = path.resolve(program.args[0]);
+    const pathNewFile = path.resolve(program.args[1]);
+    const result = gendiff(pathOldFile, pathNewFile, stylish);
     console.log(result);
   });
 program.parse();
