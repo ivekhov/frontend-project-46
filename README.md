@@ -6,6 +6,8 @@ Frontend Developer on Hexlet.
 
 ```bash
 make install-local
+
+gendiff -h
 ```
 
 ## Run tests
@@ -13,9 +15,8 @@ make install-local
 ```bash
 make test
 
+# example of usage
 gendiff  __tests__/__fixtures__/file01.json __tests__/__fixtures__/file02.json
-
-
 ```
 
 ## Development
@@ -54,6 +55,8 @@ ToDo:
     - `NODE_OPTIONS=--experimental-vm-modules npx jest` (now)
     - `npm test`
 - fix actions on github
+- Eslint warning on js extension when import module ? 
+- ESLint: Unexpected use of file extension "js" for "../src/gendiff.js"(import/extensions
 
 ----
 
