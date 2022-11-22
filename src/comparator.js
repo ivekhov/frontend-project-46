@@ -42,7 +42,6 @@ const compare = (objectOld, objectNew) => {
           });
         }
     }
-        // }
       // status added
       else if (Object.hasOwn(objectNew, key) && !Object.hasOwn(objectOld, key)) {
         diff.push({

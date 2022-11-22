@@ -40,7 +40,7 @@ test('test_json_large_part', () => {
 
   console.log(correct);
   console.log(gendiff(pathFirstFile, pathSecondFile));
-  // expect(createDiff(pathFirstFile, pathSecondFile)).toEqual(correct);
+  // expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
 });
 
 // test('test_json_large', () => {
