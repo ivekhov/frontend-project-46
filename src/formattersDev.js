@@ -11,26 +11,21 @@ const stylish = (items) => {
     } else if (item.status === 'added') {
       obj[`+ ${item.node}`] = item.value;
     } else if (item.status === 'updated') {
-      obj[`+ ${item.node}`] = item.value;
-    }
+      obj[`- ${item.node}`] = item.value[1];
+      obj[`+ ${item.node}`] = item.value[0];
+    } 
   }
   // return obj;
 
   let diff = JSON.stringify(obj, undefined, 4);
+  diff = JSON.stringify(obj, '"', '');
 
-
-  // let diff = JSON.stringify(obj, undefined, 4);
-  // let diff = JSON.stringify(obj, '"', '');
-  // diff = diff.replaceAll('\n', '');
-  // diff = diff.replaceAll('\\', '');
-  // diff = diff.replaceAll('"', '');
-  // diff = diff.replaceAll(',', '');
-  // diff = diff.replaceAll('{', {\n');
-  // diff = diff.replaceAll('}', '}\n');
-
-  // return output;
-
+  diff = diff.replaceAll('\\n', '');
+  diff = diff.replaceAll('\\', '');
+  diff = diff.replaceAll('"', '');
+  diff = diff.replaceAll(',', '');
   return diff;
+
 };
 
 export { stylish };
