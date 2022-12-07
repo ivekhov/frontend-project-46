@@ -38,7 +38,7 @@ test('test_json_large_part', () => {
   const pathFirstFile = getFixturePath('file05-2.json');
   const pathSecondFile = getFixturePath('file06-2.json');
 
-  console.log(correct);
+  // console.log(correct);
   console.log(gendiff(pathFirstFile, pathSecondFile));
   // expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
 });
