@@ -7,31 +7,48 @@
 //    "правильным" значением
 // 3. Настроить рекурсивный обход списка в случаях, где список является значением в диффе
 
-const stylish = (items) => {
+
+const data = [
+  { node: 'setting1', status: 'unchanged', value: 'Value 1' },
+  { node: 'setting2', status: 'deleted', value: 200 },
+  { node: 'setting3', status: 'updated', value: [true, false]  },
+  {
+    node: 'setting6',
+    status: 'nested',
+    value: [ 
+      {
+        node: 'setting6', status: 'deleted', value: 42 
+      }
+     ]
+  },
+  { node: 'follow', status: 'added', value: false },
+]
+
+const stylish = (diffTree) => {
 
   // console.log(items);
 
-  const EMPTY = '  ';
-  const PLUS = '+ ';
-  const MINUS = '- ';
-  const TAB = '  ';
+  // const EMPTY = '    ';
+  // const PLUS = '  + ';
+  // const MINUS = '  - ';
+  const TAB = '    ';
 
-  const getIndentType = (status) => {
-    switch (status) {
-      case 'deleted':
-        return MINUS;
-      case 'added':
-        return PLUS;
-      case 'unchanged':
-        return EMPTY;
-      case 'updated':
-        return MINUS;
-      case 'nested':
-        return EMPTY;
-      default:
-        return;
-    }
-  };
+  // const getIndentType = (status) => {
+  //   switch (status) {
+  //     case 'deleted':
+  //       return MINUS;
+  //     case 'added':
+  //       return PLUS;
+  //     case 'unchanged':
+  //       return '  ';
+  //     case 'updated':
+  //       return MINUS;
+  //     case 'nested':
+  //       return EMPTY;
+  //     default:
+  //       return;
+  //   }
+  // };
 
   // object to string formatting
   const crawler = (list, depth) => {
@@ -42,24 +59,20 @@ const stylish = (items) => {
     // mapping through lines
     const lines = list
       .map((currentItem) => {
-        let result = `${currentIndent}${getIndentType(currentItem.status)}` +
-        `${currentItem.node}: `;
-        if (Array.isArray(currentItem.value)) {
-          // if (currentItem.value === null) {
 
-            // console.log(`!!!!!!!!!!!${currentItem.node}: ${currentItem}`);
-
-            // result += `${crawler(currentItem.value, depth + 1)}`;
-
-          // }
-        } else if (typeof currentItem.value === 'object' || currentItem.value === null) {
-          // result += `${currentItem.value}`;
-          result += `${crawler(currentItem.value, depth + 1)}`;
-        } 
-
-        return result;
-      }
-    );
+        switch (currentItem.status) {
+          case 'deleted':
+            return `${currentIndent.slice(0, -2)}- ${currentItem.node}: ${currentItem.value}`;
+          case 'added':
+            return `${currentIndent.slice(0, -2)}+ ${currentItem.node}: ${currentItem.value}`;
+          case 'updated':
+            return `${currentIndent.slice(0, -2)}- ${currentItem.node}: ${currentItem.valueOld}\n${currentIndent.slice(0, -2)}+ ${currentItem.node}: ${currentItem.valueNew}`;
+          case 'unchanged':
+            return `${currentIndent}${currentItem.node}: ${currentItem.value}`;
+          case 'nested':
+            return `${currentIndent}${currentItem.node}: ${crawler(currentItem.value, depth + 1)}`;
+        }
+      });
 
     return [
       '{',
@@ -67,20 +80,11 @@ const stylish = (items) => {
       `${bracketIndent}}`,
     ].join('\n');
   }
-  return crawler(items, 1);
+  return crawler(diffTree, 1);
 }
 
 
+// console.log(stylish(data));
+
+
 export { stylish };
-
-
-// [
-//   {
-//     node: 
-//     key: 'status', 
-//     value: primitive or an array 
-//   }, 
-//   {
-
-//   }, 
-// ]

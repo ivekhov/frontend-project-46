@@ -30,29 +30,31 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__tests__', '__
 //   expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
 // });
 
-test('test_json_large_part', () => {
+// test('test_json_large_part', () => {
 
-  const correctPath = getFixturePath('test_03_correct.txt');
-  const correct = readFileSync(correctPath, 'utf8');
-
-  const pathFirstFile = getFixturePath('file05-2.json');
-  const pathSecondFile = getFixturePath('file06-2.json');
-
-  // console.log(correct);
-  console.log(gendiff(pathFirstFile, pathSecondFile));
-  // expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
-});
-
-// test('test_json_large', () => {
-
-//   const correctPath = getFixturePath('test_02_correct.txt');
+//   const correctPath = getFixturePath('test_03_correct.txt');
 //   const correct = readFileSync(correctPath, 'utf8');
 
-//   const pathFirstFile = getFixturePath('file05.json');
-//   const pathSecondFile = getFixturePath('file06.json');
+//   const pathFirstFile = getFixturePath('file05-2.json');
+//   const pathSecondFile = getFixturePath('file06-2.json');
 
-//   expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
+//   // console.log(correct);
+//   console.log(gendiff(pathFirstFile, pathSecondFile));
+//   // expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
 // });
+
+test('test_json_large', () => {
+
+  const correctPath = getFixturePath('test_02_correct.txt');
+  const correct = readFileSync(correctPath, 'utf8');
+
+
+  const pathFirstFile = getFixturePath('file05.json');
+  const pathSecondFile = getFixturePath('file06.json');
+  console.log(gendiff(pathFirstFile, pathSecondFile));
+
+  // expect(gendiff(pathFirstFile, pathSecondFile)).toEqual(correct);
+});
 
 // test('test_yml_large', () => {
 

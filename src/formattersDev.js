@@ -14,9 +14,6 @@ const stylish = (items) => {
     const currentIndent = replacer.repeat(depth);
     const bracketIndent = replacer.repeat(depth - 1);
 
-
-
-
     //
     switch (item.status) {
       case 'deleted':
@@ -29,7 +26,6 @@ const stylish = (items) => {
         return `${TAB.repeat(depth)}${MINUS}${item.node}: ${item.value[1]}\n${TAB.repeat(depth)}${PLUS}${item.node}: ${item.value[0]}\n`;
       case 'nested':
         // ToDo: walk through list if nested
-
 
 
         accumulator += `${TAB.repeat(depth)}${EMPTY}${item.node}: {\n`;
