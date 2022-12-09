@@ -23,7 +23,6 @@ const compare = (objectOld, objectNew) => {
         return {
           node: key,
           status: 'updated',
-          // value: [objectNew[key], objectOld[key]],
           valueOld: objectOld[key],
           valueNew: objectNew[key]
         };
