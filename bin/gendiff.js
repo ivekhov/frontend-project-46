@@ -2,10 +2,8 @@
 
 import { Command } from 'commander';
 import * as path from 'node:path';
-import gendiff from '../src/gendiffDev.js';
-// import { stylish } from '../src/formatters.js';
-import { stylish } from '../src/formattersDev.js';
-
+import gendiff from '../src/gendiff.js';
+import {stylish, plain} from '../src/formatters/index.js';
 const program = new Command();
 
 program
@@ -18,7 +16,21 @@ program
   .action( (args) => {
     const pathOldFile = path.resolve(program.args[0]);
     const pathNewFile = path.resolve(program.args[1]);
-    const result = gendiff(pathOldFile, pathNewFile, stylish);
-    console.log(result);
+    const options = program.opts();
+    let formatName;
+
+    switch (options.format) {
+      case 'stylish' :
+        formatName = stylish;
+        break;
+      case 'plain' :
+        formatName = plain;
+        break;
+      default:
+        formatName = stylish;  
+    }
+    
+    const diff = gendiff(pathOldFile, pathNewFile, formatName);
+    console.log(diff);
   });
 program.parse();
