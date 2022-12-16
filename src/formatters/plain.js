@@ -4,8 +4,7 @@ const sortTree = (tree) => {
   if (tree.status === 'nested') {
     return sortTree(tree.value);
   }
-  const myOrderedTree = _.sortBy(tree, (item) => item.node);
-  return myOrderedTree;
+  return _.sortBy(tree, (item) => item.node);
 };
 
 const plainStringify = (item) => {

@@ -1,12 +1,10 @@
-import _  from 'lodash';
-
+import _ from 'lodash';
 
 const sortTree = (tree) => {
   if (tree.status === 'nested') {
-    return sortTree(tree.value)
+    return sortTree(tree.value);
   }
-  const myOrderedTree = _.sortBy(tree, o => o.node);
-  return myOrderedTree;
+  return _.sortBy(tree, (item) => item.node);
 };
 
 const stringify = (currentValue, replacer, depth) => {
@@ -54,6 +52,8 @@ const stylish = (diffTree) => {
             return `${currentIndent}${currentItem.node}: ${stringify(currentItem.value, TAB, depth + 1)}`;
           case 'nested':
             return `${currentIndent}${currentItem.node}: ${crawler(currentItem.value, depth + 1)}`;
+          default:
+            break;
         }
       });
     return [
