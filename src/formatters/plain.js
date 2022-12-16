@@ -9,11 +9,6 @@ const sortTree = (tree) => {
 };
 
 const plainStringify = (item) => {
-  // if (typeof item !== 'object' || item === null) {
-  //   return `'${item}'`;
-  // }
-  // return '[complex value]';
-
   if (typeof item === 'object' && item !== null) {
     return '[complex value]';
   } else if (item === null) {
@@ -40,8 +35,6 @@ const plain = (diffTree) => {
             return `Property '${[...keys, currentNode.node].join('.')}' was removed`;
           case 'updated':
             return `Property '${[...keys, currentNode.node].join('.')}' was updated. From ${plainStringify(currentNode.valueOld)} to ${plainStringify(currentNode.valueNew)}`;
-          // case 'unchanged':
-            // return;
           case 'nested':
             return crawler(currentNode.value, [...keys, currentNode.node]);
         }
