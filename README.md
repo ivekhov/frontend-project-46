@@ -2,6 +2,16 @@
 
 Frontend Developer on Hexlet.
 
+https://ru.hexlet.io/programs/frontend/projects/46
+
+---
+## How it works 
+
+Asciinema: https://asciinema.org/a/LtmkA9A1ztfdFbl0W51Wp5NC8
+
+[![asciicast](https://asciinema.org/a/LtmkA9A1ztfdFbl0W51Wp5NC8.svg)](https://asciinema.org/a/LtmkA9A1ztfdFbl0W51Wp5NC8)
+
+
 ## Setup local
 
 ```bash
@@ -48,8 +58,7 @@ make gendiff-help
 
 ToDo:
 
-- recursion task #06
-- fix test-coverage command from `make test-coverage`
+
 - fix tests of cli utility
   - test from or?
     - `NODE_OPTIONS=--experimental-vm-modules npx jest` (now)
