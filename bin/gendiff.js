@@ -17,23 +17,24 @@ program
   .action((args) => {
     const pathOldFile = path.resolve(program.args[0]);
     const pathNewFile = path.resolve(program.args[1]);
-    const options = program.opts();
-    let formatName;
+    // const options = program.opts();
+    // let formatName;
 
-    switch (options.format) {
-      case 'stylish':
-        formatName = stylish;
-        break;
-      case 'plain':
-        formatName = plain;
-        break;
-      case 'json':
-        formatName = jsonish;
-        break;
-      default:
-        formatName = stylish;
-    }
-    const diff = gendiff(pathOldFile, pathNewFile, formatName);
+    // switch (options.format) {
+    //   case 'stylish':
+    //     formatName = stylish;
+    //     break;
+    //   case 'plain':
+    //     formatName = plain;
+    //     break;
+    //   case 'json':
+    //     formatName = jsonish;
+    //     break;
+    //   default:
+    //     formatName = stylish;
+    // }
+    // const diff = gendiff(pathOldFile, pathNewFile, formatName);
+    const diff = gendiff(pathOldFile, pathNewFile, program.opts().format)
     console.log(diff);
   });
 program.parse();
