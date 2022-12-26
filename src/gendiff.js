@@ -4,7 +4,6 @@ import * as path from 'node:path';
 import { compare } from './comparator.js';
 import { stylish, plain, jsonish  } from './formatters/index.js';
 
-
 const getFilePath = (file) => path.resolve(file);
 
 const getFileExtension = (filePath) => filePath.split('.').slice(-1)[0];
@@ -20,7 +19,6 @@ const parseFile = (filePath, fileExtension) => {
       return yaml.load(fileContent);
   }
 };
-
 
 export default (fileOld, fileNew, formatter = 'stylish') => {
 
@@ -46,3 +44,4 @@ export default (fileOld, fileNew, formatter = 'stylish') => {
       return stylish(diff);
   }
 };
+

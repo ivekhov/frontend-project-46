@@ -46,3 +46,4 @@ const compare = (objectOld, objectNew) => {
 };
 
 export { compare };
+
