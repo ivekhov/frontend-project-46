@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import * as path from 'node:path';
 import gendiff from '../src/gendiff.js';
-import { stylish, plain, jsonish } from '../src/formatters/index.js';
+
 
 const program = new Command();
 
@@ -15,30 +14,7 @@ program
   .argument('filepath2')
   .version('output the version number')
   .action((args) => {
-    const pathOldFile = path.resolve(program.args[0]);
-    const pathNewFile = path.resolve(program.args[1]);
-    const options = program.opts();
-    let formatName;
-
-    switch (options.format) {
-      case 'stylish':
-        formatName = stylish;
-        break;
-      case 'plain':
-        formatName = plain;
-        break;
-      case 'json':
-        formatName = jsonish;
-        break;
-      default:
-        formatName = stylish;
-    }
-    const diff = gendiff(pathOldFile, pathNewFile, formatName);
-
-    // в данной реализации program.opts().format возвращает строку
-    // т е без блока switch - case не обойтись, вопрос - следует ли 
-    // такой автомат реализовывать тут или в файле из папки скриптов? 
-    // const diff = gendiff(pathOldFile, pathNewFile, program.opts().format)
+    const diff = gendiff(program.args[0], program.args[1], program.opts().format);
     console.log(diff);
   });
 program.parse();
