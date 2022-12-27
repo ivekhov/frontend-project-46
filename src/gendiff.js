@@ -4,7 +4,7 @@ import * as path from 'node:path';
 import { compare } from './comparator.js';
 import { stylish, plain, jsonish  } from './formatters/index.js';
 
-const getFilePath = (file) => path.resolve(file);
+const getFilePath = (file) => path.resolve(process.cwd(), file);
 
 const getFileExtension = (filePath) => filePath.split('.').slice(-1)[0];
 
