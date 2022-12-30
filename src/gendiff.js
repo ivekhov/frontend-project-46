@@ -1,47 +1,29 @@
 import { readFileSync } from 'node:fs';
-import * as yaml from 'js-yaml';
 import * as path from 'node:path';
-import { compare } from './comparator.js';
-import { stylish, plain, jsonish  } from './formatters/index.js';
+import { compareObjects } from './comparators.js';
+import parseFile from './parsers.js';
+import formatDiff from './formatters.js';
 
 const getFilePath = (file) => path.resolve(process.cwd(), file);
 
-const getFileExtension = (filePath) => filePath.split('.').slice(-1)[0];
-
-const parseFile = (filePath, fileExtension) => {
-  const fileContent = readFileSync(filePath, 'utf8');
-  switch (fileExtension) {
-    case 'json':
-      return JSON.parse(fileContent);
-    case 'yaml':
-      return yaml.load(fileContent);
-    case 'yml':
-      return yaml.load(fileContent);
-  }
-};
+const readFileContent = (filePath) => readFileSync(filePath, 'utf-8');
 
 export default (fileOld, fileNew, formatter = 'stylish') => {
 
   const pathFileOld = getFilePath(fileOld);
   const pathOldNew = getFilePath(fileNew);
 
-  const fileExtensionOld = getFileExtension(pathFileOld);
-  const fileExtensionNew = getFileExtension(pathOldNew);
+  const fileExtensionOld = path.extname(fileOld);
+  const fileExtensionNew = path.extname(fileNew);
   
-  const objectOld = parseFile(pathFileOld, fileExtensionOld);
-  const objectNew = parseFile(pathOldNew, fileExtensionNew);
+  const fileContentOld = readFileContent(pathFileOld);
+  const fileContentNew = readFileContent(pathOldNew);
 
-  const diff = compare(objectOld, objectNew);
+  const objectOld = parseFile(fileContentOld, fileExtensionOld);
+  const objectNew = parseFile(fileContentNew, fileExtensionNew);
 
-  switch (formatter) {
-    case 'stylish':
-      return stylish(diff);
-    case 'plain':
-      return plain(diff);
-    case 'json':
-      return jsonish(diff);
-    default:
-      return stylish(diff);
-  }
+  const diff = compareObjects(objectOld, objectNew);
+
+  return formatDiff(diff, formatter);
 };
 
