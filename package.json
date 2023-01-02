@@ -1,12 +1,13 @@
 {
-  "name": "@hexlet/code",
+  "name": "hexlet@gendiff",
   "version": "1.0.0",
   "description": "Command line tool for creating diff between two files.",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "npx jest"
+    "test": "npx jest",
+    "main": "./src/gendiff.js",
   },
   "repository": {
     "type": "git",

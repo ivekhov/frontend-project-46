@@ -10,8 +10,7 @@ export default (diff, formatter) => {
     case 'json':
       return jsonish(diff);
     default:
-      throw new Error('Unknown formatter name.');
-      break;
+      throw new Error('Unknown formatter name ${formatter}.');
   };
 };
 

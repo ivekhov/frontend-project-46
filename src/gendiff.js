@@ -5,22 +5,19 @@ import parseFile from './parsers.js';
 import formatDiff from './formatters.js';
 
 const getFilePath = (file) => path.resolve(process.cwd(), file);
-
 const readFileContent = (filePath) => readFileSync(filePath, 'utf-8');
+const fileExtension = path.extname(fileOld);
 
 export default (fileOld, fileNew, formatter = 'stylish') => {
 
   const pathFileOld = getFilePath(fileOld);
   const pathOldNew = getFilePath(fileNew);
-
-  const fileExtensionOld = path.extname(fileOld);
-  const fileExtensionNew = path.extname(fileNew);
   
   const fileContentOld = readFileContent(pathFileOld);
   const fileContentNew = readFileContent(pathOldNew);
 
-  const objectOld = parseFile(fileContentOld, fileExtensionOld);
-  const objectNew = parseFile(fileContentNew, fileExtensionNew);
+  const objectOld = parseFile(fileContentOld, fileExtension);
+  const objectNew = parseFile(fileContentNew, fileExtension);
 
   const diff = compareObjects(objectOld, objectNew);
 

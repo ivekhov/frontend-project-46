@@ -1,8 +1,6 @@
 #!/usr/bin/env node
-
 import { Command } from 'commander';
 import gendiff from '../src/gendiff.js';
-
 
 const program = new Command();
 
@@ -17,4 +15,6 @@ program
     const diff = gendiff(program.args[0], program.args[1], program.opts().format);
     console.log(diff);
   });
+
 program.parse();
+
