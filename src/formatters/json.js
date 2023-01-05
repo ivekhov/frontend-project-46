@@ -7,7 +7,7 @@ const sortTree = (tree) => {
   return _.sortBy(tree, (item) => item.node);
 };
 
-/* eslint fp/no-mutation: "error" */
+/* eslint no-param-reassign: "error" */
 export default (diffTree) => {
   const crawler = (items, storage) => {
     const sortedItems = sortTree(items);
