@@ -35,6 +35,12 @@ make install-local
 gendiff -h
 ```
 
+## Usage example
+
+```js
+import { gendiff } from '@gendiff/hexlet';
+```
+
 ## Run tests
 
 ```bash

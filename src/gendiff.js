@@ -6,18 +6,25 @@ import formatDiff from './formatters.js';
 
 const getFilePath = (file) => path.resolve(process.cwd(), file);
 const readFileContent = (filePath) => readFileSync(filePath, 'utf-8');
-const fileExtension = path.extname(fileOld);
+const getFileExtension = (pathFile) => path.extname(pathFile);
 
 export default (fileOld, fileNew, formatter = 'stylish') => {
 
   const pathFileOld = getFilePath(fileOld);
-  const pathOldNew = getFilePath(fileNew);
+  const pathFileNew = getFilePath(fileNew);
   
   const fileContentOld = readFileContent(pathFileOld);
-  const fileContentNew = readFileContent(pathOldNew);
+  const fileContentNew = readFileContent(pathFileNew);
 
-  const objectOld = parseFile(fileContentOld, fileExtension);
-  const objectNew = parseFile(fileContentNew, fileExtension);
+  const fileOldExtension = getFileExtension(pathFileOld);
+  const fileNewExtension = getFileExtension(pathFileNew);
+
+  if (fileOldExtension !== fileNewExtension) {
+    throw new Error(`File extensions are not equal: ${fileOldExtension}, ${fileNewExtension}.`);
+  }
+
+  const objectOld = parseFile(fileContentOld, fileOldExtension);
+  const objectNew = parseFile(fileContentNew, fileNewExtension);
 
   const diff = compareObjects(objectOld, objectNew);
 

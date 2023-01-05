@@ -4,14 +4,16 @@
         setting1: Value 1
       - setting2: 200
       - setting3: true
-      + setting3: null
+      + setting3: {
+            key: value
+        }
       + setting4: blah blah
       + setting5: {
             key5: value5
         }
         setting6: {
             doge: {
-              - wow:
+              - wow: too much
               + wow: so much
             }
             key: value
@@ -41,20 +43,22 @@
         }
         fee: 100500
     }
+    group4: {
+      - default: null
+      + default: 
+      - foo: 0
+      + foo: null
+      - isNested: false
+      + isNested: none
+      + key: false
+        nest: {
+          - bar: 
+          + bar: 0
+          - isNested: true
+        }
+      + someKey: true
+      - type: bas
+      + type: bar
+    }
+    language: js
 }
-
-
-const data = [
-  { node: 'setting1', value: 42, status: 'added' },
-  { node: 'setting2', value: 5, status: 'deleted' },
-  { node: 'setting3', value: 66, status: 'unchanged' },
-  {
-    node: 'setting4', valueOld: 0, valueNew: 100, status: 'updated',
-  },
-  { node: 'setting6',  status: 'nested' , value: [
-      { node: 'setting101', value: 42, status: 'added' },
-      { node: 'setting102', status: 'added', value: {'key': 'value'} },
-
-    ]},
-];
-

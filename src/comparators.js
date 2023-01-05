@@ -10,7 +10,7 @@ const compareObjects = (objectOld, objectNew) => {
          status: 'added',
          value: objectNew[key],
       };
-    }:
+    };
     if (!Object.hasOwn(objectNew, key)) {
       return {
         node: key,

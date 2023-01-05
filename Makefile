@@ -8,7 +8,7 @@ lint:
 	npx eslint .
 
 install-local:
-	npm link
+	npm link --force
 
 publish:
 	npm publish --dry-run

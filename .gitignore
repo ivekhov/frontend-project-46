@@ -3,4 +3,4 @@ node_modules/
 coverage/
 .idea/
 __temp_local/
-
+__deprecated/
