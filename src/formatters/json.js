@@ -8,7 +8,6 @@ const sortTree = (tree) => {
 };
 
 /* eslint no-param-reassign: "error" */
-/* eslint fp/no-mutation: "error" */
 export default (diffTree) => {
   const crawler = (items, storage) => {
     const sortedItems = sortTree(items);
