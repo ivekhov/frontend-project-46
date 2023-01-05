@@ -13,6 +13,7 @@ export default (diffTree) => {
     const result = sortedItems.reduce((acc, node) => {
       switch (node.status) {
         case 'added':
+          /* eslint no-param-reassign: "error" */
           storage[`+ ${node.node}`] = node.value;
           break;
         case 'deleted':
