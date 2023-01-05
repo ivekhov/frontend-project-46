@@ -8,27 +8,18 @@ const sortTree = (tree) => {
 };
 
 const plainStringify = (item) => {
-  if (typeof item === 'object' && item !== null) {
-    return '[complex value]';
-  } else if (item === null) {
-    return 'null';
-  } else if (typeof item === 'boolean') {
-    return item;
-  } else if (typeof item === 'number' ) {
-    return `${item}`;
-  } else {
-    return `'${item}'`;
-  }
+  if (typeof item === 'object' && item !== null) return '[complex value]';
+  if (item === null) return 'null';
+  if (typeof item === 'boolean') return item;
+  if (typeof item === 'number') return `${item}`;
+  return `'${item}'`;
 };
 
-const plain = (diffTree) => {
-  // eslint-disable-next-line no-unused-vars
+export default (diffTree) => {
   const crawler = (items, keys) => {
     const sortedItems = sortTree(items);
     const lines = sortedItems
-      // eslint-disable-next-line array-callback-return,consistent-return
       .map((currentNode) => {
-        // eslint-disable-next-line default-case
         switch (currentNode.status) {
           case 'added':
             return `Property '${[...keys, currentNode.node].join('.')}' was added with value: ${plainStringify(currentNode.value)}`;
@@ -38,6 +29,8 @@ const plain = (diffTree) => {
             return `Property '${[...keys, currentNode.node].join('.')}' was updated. From ${plainStringify(currentNode.valueOld)} to ${plainStringify(currentNode.valueNew)}`;
           case 'nested':
             return crawler(currentNode.value, [...keys, currentNode.node]);
+          default:
+            return new Error(`Unknown node status ${currentNode.status}`);
         }
       });
     return [
@@ -46,6 +39,3 @@ const plain = (diffTree) => {
   };
   return crawler(diffTree, []);
 };
-
-// eslint-disable-next-line import/prefer-default-export
-export { plain };

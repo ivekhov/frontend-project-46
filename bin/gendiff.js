@@ -11,10 +11,9 @@ program
   .argument('filepath1')
   .argument('filepath2')
   .version('output the version number')
-  .action((args) => {
+  .action(() => {
     const diff = gendiff(program.args[0], program.args[1], program.opts().format);
     console.log(diff);
   });
 
 program.parse();
-

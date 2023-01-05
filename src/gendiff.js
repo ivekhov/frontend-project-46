@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import * as path from 'node:path';
-import { compareObjects } from './comparators.js';
+import compareObjects from './comparators.js';
 import parseFile from './parsers.js';
 import formatDiff from './formatters.js';
 
@@ -9,10 +9,9 @@ const readFileContent = (filePath) => readFileSync(filePath, 'utf-8');
 const getFileExtension = (pathFile) => path.extname(pathFile);
 
 export default (fileOld, fileNew, formatter = 'stylish') => {
-
   const pathFileOld = getFilePath(fileOld);
   const pathFileNew = getFilePath(fileNew);
-  
+
   const fileContentOld = readFileContent(pathFileOld);
   const fileContentNew = readFileContent(pathFileNew);
 
@@ -30,4 +29,3 @@ export default (fileOld, fileNew, formatter = 'stylish') => {
 
   return formatDiff(diff, formatter);
 };
-

@@ -1,5 +1,4 @@
-import { jsonish, plain, stylish} from './formatters/index.js';
-
+import { jsonish, plain, stylish } from './formatters/index.js';
 
 export default (diff, formatter) => {
   switch (formatter) {
@@ -10,7 +9,6 @@ export default (diff, formatter) => {
     case 'json':
       return jsonish(diff);
     default:
-      throw new Error('Unknown formatter name ${formatter}.');
-  };
+      throw new Error(`Unknown formatter name ${formatter}.`);
+  }
 };
-

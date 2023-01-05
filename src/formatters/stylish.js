@@ -8,7 +8,6 @@ const sortTree = (tree) => {
 };
 
 const stringify = (currentValue, replacer, depth) => {
-
   if (typeof currentValue !== 'object' || currentValue === null) {
     return `${currentValue}`;
   }
@@ -19,10 +18,8 @@ const stringify = (currentValue, replacer, depth) => {
 
   const lines = Object
     .entries(currentValue)
-    .map(([key, val]) =>
-      `${currentIndent}${key}: ` +
-      `${stringify(val, replacer, depth + 1)}`
-    );
+    .map(([key, val]) => `${currentIndent}${key}: `
+      + `${stringify(val, replacer, depth + 1)}`);
   return [
     '{',
     ...lines,
@@ -30,7 +27,7 @@ const stringify = (currentValue, replacer, depth) => {
   ].join('\n');
 };
 
-const stylish = (diffTree) => {
+export default (diffTree) => {
   const TAB = '    ';
 
   const crawler = (list, depth) => {
@@ -53,7 +50,7 @@ const stylish = (diffTree) => {
           case 'nested':
             return `${currentIndent}${currentItem.node}: ${crawler(currentItem.value, depth + 1)}`;
           default:
-            break;
+            throw new Error(`Unexpected status ${currentItem.status}`);
         }
       });
     return [
@@ -64,5 +61,3 @@ const stylish = (diffTree) => {
   };
   return crawler(diffTree, 1);
 };
-
-export { stylish };

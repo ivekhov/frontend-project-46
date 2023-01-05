@@ -9,7 +9,6 @@ export default (fileContent, fileExtension) => {
     case '.yml':
       return yaml.load(fileContent);
     default:
-      throw new Error('Format ${fileExtension} is incorrect.');
+      throw new Error(`Format ${fileExtension} is incorrect.`);
   }
 };
-
