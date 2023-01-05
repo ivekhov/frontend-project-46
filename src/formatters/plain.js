@@ -14,6 +14,8 @@ const plainStringify = (item) => {
     return 'null';
   } else if (typeof item === 'boolean') {
     return item;
+  } else if (typeof item === 'number' ) {
+    return `${item}`;
   } else {
     return `'${item}'`;
   }
