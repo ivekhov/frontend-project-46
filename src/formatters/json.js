@@ -7,13 +7,14 @@ const sortTree = (tree) => {
   return _.sortBy(tree, (item) => item.node);
 };
 
+/* eslint no-param-reassign: "error" */
+/* eslint fp/no-mutation: "error" */
 export default (diffTree) => {
   const crawler = (items, storage) => {
     const sortedItems = sortTree(items);
     const result = sortedItems.reduce((acc, node) => {
       switch (node.status) {
         case 'added':
-          /* eslint no-param-reassign: "error" */
           storage[`+ ${node.node}`] = node.value;
           break;
         case 'deleted':
