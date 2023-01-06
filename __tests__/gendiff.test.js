@@ -9,12 +9,11 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 const extension = ['json', 'yml'];
-/* eslint-disable */
+/* eslint-disable fp/no-let */
 let correctPathStylish;
 let correctStylish;
 let correctPathPlain;
 let correctPlain;
-/* eslint-enable */
 
 /* eslint-disable fp/no-mutation  */
 beforeAll(() => {
