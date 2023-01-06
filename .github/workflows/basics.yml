@@ -1,5 +1,9 @@
 name: basics
 on: push
+env:
+  CI: true
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -9,9 +13,9 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v3
-      - name: my-step
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
@@ -23,6 +27,6 @@ jobs:
         uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-            #with:
-            #coverageCommand: make test-coverage
+        with:
+          coverageCommand: make test-coverage
             #debug: true
