@@ -83,16 +83,4 @@ make publish
 make gendiff-help
 ```
 
-ToDo:
-
-
-- fix tests of cli utility
-  - test from or?
-    - `NODE_OPTIONS=--experimental-vm-modules npx jest` (now)
-    - `npm test`
-- fix actions on github
-- Eslint warning on js extension when import module ? 
-- ESLint: Unexpected use of file extension "js" for "../src/gendiff.js"(import/extensions
-
-----
 ----
