@@ -9,13 +9,14 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 const extension = ['json', 'yml'];
-// eslint-disable fp/no-let
+/* eslint-disable */
 let correctPathStylish;
 let correctStylish;
 let correctPathPlain;
 let correctPlain;
+/* eslint-enable */
 
-// eslint-disable fp/no-mutation
+/* eslint-disable fp/no-mutation  */
 beforeAll(() => {
   correctPathStylish = getFixturePath('result_stylish.txt');
   correctStylish = readFileSync(correctPathStylish, 'utf8').trim();
