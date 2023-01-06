@@ -44,7 +44,7 @@ gendiff -h
 ## Usage example
 
 ```js
-import { gendiff } from '@hexlet/gendiff';
+import { gendiff } from '@hexlet/code';
 ```
 
 ## Run tests

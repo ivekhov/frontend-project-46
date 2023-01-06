@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import * as path from 'node:path';
+import path from 'node:path';
 import compareObjects from './comparators.js';
 import parseFile from './parsers.js';
 import formatDiff from './formatters.js';
