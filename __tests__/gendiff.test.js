@@ -9,11 +9,13 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 const extension = ['json', 'yml'];
+// eslint-disable fp/no-let
 let correctPathStylish;
 let correctStylish;
 let correctPathPlain;
 let correctPlain;
 
+// eslint-disable fp/no-mutation
 beforeAll(() => {
   correctPathStylish = getFixturePath('result_stylish.txt');
   correctStylish = readFileSync(correctPathStylish, 'utf8').trim();
@@ -21,13 +23,13 @@ beforeAll(() => {
   correctPlain = readFileSync(correctPathPlain, 'utf8').trim();
 });
 
-test.each(extension)('test stylish', (ext) => {
+test.each(extension)('stylish', (ext) => {
   const fileAfter = getFixturePath(`fileAfter.${ext}`);
   const fileBefore = getFixturePath(`fileBefore.${ext}`);
   expect(gendiff(fileBefore, fileAfter)).toEqual(correctStylish);
 });
 
-test.each(extension)('test plain', (ext) => {
+test.each(extension)('plain', (ext) => {
   const fileAfter = getFixturePath(`fileAfter.${ext}`);
   const fileBefore = getFixturePath(`fileBefore.${ext}`);
   expect(gendiff(fileBefore, fileAfter, 'plain')).toEqual(correctPlain);
