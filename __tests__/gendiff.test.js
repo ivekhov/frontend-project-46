@@ -23,14 +23,9 @@ beforeAll(() => {
   correctPlain = readFileSync(correctPathPlain, 'utf8').trim();
 });
 
-test.each(extension)('stylish', (ext) => {
+test.each(extension)('plain, stylish tests', (ext) => {
   const fileAfter = getFixturePath(`fileAfter.${ext}`);
   const fileBefore = getFixturePath(`fileBefore.${ext}`);
   expect(gendiff(fileBefore, fileAfter)).toEqual(correctStylish);
-});
-
-test.each(extension)('plain', (ext) => {
-  const fileAfter = getFixturePath(`fileAfter.${ext}`);
-  const fileBefore = getFixturePath(`fileBefore.${ext}`);
   expect(gendiff(fileBefore, fileAfter, 'plain')).toEqual(correctPlain);
 });

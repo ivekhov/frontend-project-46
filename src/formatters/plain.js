@@ -15,6 +15,7 @@ const plainStringify = (item) => {
   return `'${item}'`;
 };
 
+/* eslint-disable array-callback-return, consistent-return */
 export default (diffTree) => {
   const crawler = (items, keys) => {
     const sortedItems = sortTree(items);
@@ -29,8 +30,10 @@ export default (diffTree) => {
             return `Property '${[...keys, currentNode.node].join('.')}' was updated. From ${plainStringify(currentNode.valueOld)} to ${plainStringify(currentNode.valueNew)}`;
           case 'nested':
             return crawler(currentNode.value, [...keys, currentNode.node]);
+          case 'unchanged':
+            break;
           default:
-            return new Error(`Unknown node status ${currentNode.status}`);
+            throw new Error(`Unknown node status ${currentNode.status}`);
         }
       });
     return [
